@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace PresentationTool {
+namespace P4T {
     internal class Config {
         protected Utilities.Profile profile;
         protected struct ConfigValue {

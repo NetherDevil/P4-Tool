@@ -15,7 +15,7 @@ using System.Windows.Media;
 using WD = System.Drawing;
 using System.Net.Http.Headers;
 
-namespace PresentationTool {
+namespace P4T {
     public partial class App : Application {
         PP.Application ppa;
         internal static Config Config;

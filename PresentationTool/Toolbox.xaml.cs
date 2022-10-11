@@ -1,36 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using WF = System.Windows.Forms;
-using PP = Microsoft.Office.Interop.PowerPoint;
-using System.Windows.Interop;
 using System.Runtime.InteropServices;
-using System.Linq.Expressions;
-using System.CodeDom;
-using System.Data.SqlTypes;
+using System.Threading;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Interop;
+using System.Windows.Media;
+using PP = Microsoft.Office.Interop.PowerPoint;
+using WA = P4T.Win32.NativeAPI;
+using WF = System.Windows.Forms;
 
-namespace PresentationTool {
+namespace P4T {
     public partial class Toolbox : Window {
         PP.SlideShowWindow ssw;
         App appInstance;
         System.Timers.Timer updateTimer, aliveTimer;
         WF.ColorDialog colorDialog = new WF.ColorDialog();
-        int retryCount, maxRetry;
+        // int retryCount, maxRetry;
         string presId;
         IntPtr windowHandle;
         uint AccentColor {
-            //get { return ((SolidColorBrush)Resources["AccentColor"]).Color; }
             set {
                 Color nc = Color.FromArgb(
                     (byte)((value & 0xff000000) >> 24),
@@ -43,10 +31,6 @@ namespace PresentationTool {
         int LastColor = 0;
         double screenDpi = 1;
         bool drag = false;
-        class ReferencedBoolean {
-            public bool Value;
-        };
-        ReferencedBoolean procRunning = new ReferencedBoolean();
         Point dragStart, windowStart, targetPos;
         Size screenSize;
         int shouldX = 0, shouldY = 0;
@@ -89,13 +73,13 @@ namespace PresentationTool {
             Win32.WindowCompositionAttributeModifier modifier = new Win32.WindowCompositionAttributeModifier(this);
             uint accent;
             bool tmp;
-            Win32.WindowAPI.DwmGetColorizationColor(out accent, out tmp);
+            WA.DwmApi.DwmGetColorizationColor(out accent, out tmp);
             AccentColor = accent;
             modifier.Color = Color.FromArgb(128, 0, 0, 0);
             modifier.Enable();
             ExtendsVisible = false;
             maxControlMiss = App.Config.GetValue<long>("Toolbox", "MaxControlMiss", 20);
-            maxRetry = App.Config.GetValue("Generic", "MaxRetryCount", -1);
+            // maxRetry = App.Config.GetValue("Generic", "MaxRetryCount", -1);
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
         }
 
@@ -196,7 +180,7 @@ namespace PresentationTool {
             }
             shouldX = (int)(x * screenDpi);
             shouldY = (int)(y * screenDpi);
-            Win32.WindowAPI.MoveWindow(windowHandle, shouldX, shouldY, actualWidth, actualHeight, false);
+            WA.User32.MoveWindow(windowHandle, shouldX, shouldY, actualWidth, actualHeight, false);
         }
 
         private void Drag_MouseDown(object sender, MouseButtonEventArgs e) {
@@ -351,8 +335,8 @@ namespace PresentationTool {
                 //ssw.View.EraseDrawing();
                 ssw.View.PointerType = PP.PpSlideShowPointerType.ppSlideShowPointerAutoArrow;
                 ssw.Activate();
-                Win32.WindowAPI.PostMessage((IntPtr)ssw.HWND, 0x0100, (IntPtr)0x45, IntPtr.Zero); // WM_KEYDOWN, 'E'
-                Win32.WindowAPI.PostMessage((IntPtr)ssw.HWND, 0x0101, (IntPtr)0x45, IntPtr.Zero); // WM_KEYUP, 'E'
+                WA.User32.PostMessage((IntPtr)ssw.HWND, 0x0100, (IntPtr)0x45, IntPtr.Zero); // WM_KEYDOWN, 'E'
+                WA.User32.PostMessage((IntPtr)ssw.HWND, 0x0101, (IntPtr)0x45, IntPtr.Zero); // WM_KEYUP, 'E'
                 if (ssw.IsFullScreen == Microsoft.Office.Core.MsoTriState.msoFalse) {
                     ssw.View.EraseDrawing();
                 }
@@ -384,8 +368,8 @@ namespace PresentationTool {
 
         private void TaskbarSwitch_Click(object sender, RoutedEventArgs e) {
             try {
-                IntPtr hWnd = Win32.WindowAPI.FindWindow("Shell_TrayWnd", null);
-                Win32.WindowAPI.SetForegroundWindow(hWnd);
+                IntPtr hWnd = WA.User32.FindWindow("Shell_TrayWnd", null);
+                WA.User32.SetForegroundWindow(hWnd);
             }
             catch { }
         }

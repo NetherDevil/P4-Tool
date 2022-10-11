@@ -1,7 +1,8 @@
-﻿<Application x:Class="PresentationTool.App"
+﻿<Application x:Class="P4T.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:PresentationTool" ShutdownMode="OnExplicitShutdown" Exit="Application_Exit">
+             xmlns:local="clr-namespace:P4T"
+             ShutdownMode="OnExplicitShutdown" Exit="Application_Exit">
     <Application.Resources>
         <TextBlock x:Key="Status">Unknown</TextBlock>
         <ContextMenu x:Key="NotifyIconMenu" StaysOpen="False" Focusable="True">
