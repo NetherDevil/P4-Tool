@@ -77,19 +77,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Config.cs" />
-    <Compile Include="EmptyWindow.xaml.cs">
-      <DependentUpon>EmptyWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Toolbox.xaml.cs">
       <DependentUpon>Toolbox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Profile.cs" />
     <Compile Include="Win32\WindowAPI.cs" />
     <Compile Include="Win32\WindowCompositionAttribute.cs" />
-    <Page Include="EmptyWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>

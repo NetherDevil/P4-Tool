@@ -21,9 +21,6 @@ using System.CodeDom;
 using System.Data.SqlTypes;
 
 namespace PresentationTool {
-    /// <summary>
-    /// Toolbox.xaml 的交互逻辑
-    /// </summary>
     public partial class Toolbox : Window {
         PP.SlideShowWindow ssw;
         App appInstance;

@@ -16,9 +16,6 @@ using WD = System.Drawing;
 using System.Net.Http.Headers;
 
 namespace PresentationTool {
-    /// <summary>
-    /// App.xaml 的交互逻辑
-    /// </summary>
     public partial class App : Application {
         PP.Application ppa;
         internal static Config Config;
