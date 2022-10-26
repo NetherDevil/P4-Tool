@@ -220,7 +220,9 @@ namespace P4T {
                     CloseWindow();
                 }
             }
-            catch { }
+            catch {
+                CloseWindow();
+            }
         }
 
         private void Drag_MouseUp(object sender, MouseButtonEventArgs e) {
@@ -266,6 +268,7 @@ namespace P4T {
         void CloseWindow() {
             if (!closeRequested) {
                 appInstance.RemoveConnection(presId);
+                closeRequested = true;
             }
             else {
                 Dispatcher.BeginInvoke(new Action(delegate

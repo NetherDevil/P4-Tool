@@ -82,10 +82,16 @@ namespace P4T {
         void PurgeConnection() {
             lock (toolboxWindows) {
                 foreach (Window w in toolboxWindows.Values) {
-                    try {
-                        w.Close();
+                    /*try {
+                        Dispatcher.BeginInvoke(new Action(delegate
+                        {
+                            try {
+                                w.Close();
+                            }
+                            catch { }
+                        }));
                     }
-                    catch { }
+                    catch { }*/
                 }
                 toolboxWindows.Clear();
             }
