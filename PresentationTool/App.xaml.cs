@@ -240,8 +240,8 @@ namespace P4T {
             notify.Icon = new WD.Icon(GetResourceStream(new Uri("Icon.ico", UriKind.Relative)).Stream);
             notify.Visible = true;
             notify.Click += Notify_Click;
-            notify.BalloonTipTitle = "PPT Presentation Tool";
-            notify.Text = "PPT Presentation Tool";
+            notify.BalloonTipTitle = "P4T PowerPoint Presentation Tool";
+            notify.Text = "P4T PowerPoint Presentation Tool";
             OpenToolbox = new openToolbox(CreateToolbox);
             sswQueue = new Queue<PP.SlideShowWindow>();
             toolboxWindows = new Dictionary<string, Window>();
