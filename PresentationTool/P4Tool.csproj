@@ -97,12 +97,12 @@
       <DependentUpon>Toolbox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Profile.cs" />
-    <Compile Include="Win32\Enums.cs" />
-    <Compile Include="Win32\NativeAPI\DwmApi.cs" />
-    <Compile Include="Win32\NativeAPI\Kernel32.cs" />
-    <Compile Include="Win32\NativeAPI\User32.cs" />
-    <Compile Include="Win32\Structures.cs" />
-    <Compile Include="Win32\WindowCompositionAttribute.cs" />
+    <Compile Include="WindowsNative\Enums.cs" />
+    <Compile Include="WindowsNative\Apis\DwmApi.cs" />
+    <Compile Include="WindowsNative\Apis\Kernel32.cs" />
+    <Compile Include="WindowsNative\Apis\User32.cs" />
+    <Compile Include="WindowsNative\Structures.cs" />
+    <Compile Include="Utilities\WindowCompositionAttribute.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>

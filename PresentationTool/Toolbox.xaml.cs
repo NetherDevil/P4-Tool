@@ -6,7 +6,7 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using PP = Microsoft.Office.Interop.PowerPoint;
-using WA = P4T.Win32.NativeAPI;
+using WA = P4T.WindowsNative.Apis;
 using WF = System.Windows.Forms;
 
 namespace P4T {
@@ -70,7 +70,7 @@ namespace P4T {
             updateTimer.Start();
             aliveTimer.Start();
             screenSize = new Size(SystemParameters.PrimaryScreenWidth, SystemParameters.PrimaryScreenHeight);
-            Win32.WindowCompositionAttributeModifier modifier = new Win32.WindowCompositionAttributeModifier(this);
+            Utilities.WindowCompositionAttributeModifier modifier = new Utilities.WindowCompositionAttributeModifier(this);
             uint accent;
             bool tmp;
             WA.DwmApi.DwmGetColorizationColor(out accent, out tmp);
