@@ -6,6 +6,11 @@
     <Application.Resources>
         <TextBlock x:Key="Status">Unknown</TextBlock>
         <ContextMenu x:Key="NotifyIconMenu" StaysOpen="False" Focusable="True">
+            <ContextMenu.Resources>
+                <Style TargetType="MenuItem">
+                    <Setter Property="Height" Value="28"/>
+                </Style>
+            </ContextMenu.Resources>
             <MenuItem IsEnabled="False">
                 <MenuItem.Header>
                     <Grid>

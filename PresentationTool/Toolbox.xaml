@@ -11,7 +11,7 @@
         Stylus.IsFlicksEnabled="False" Stylus.IsPressAndHoldEnabled="False"
         Title="Toolbox" Height="272" Width="160" Background="Transparent" SizeToContent="WidthAndHeight">
     <WindowChrome.WindowChrome>
-        <WindowChrome GlassFrameThickness="0" ResizeBorderThickness="0" NonClientFrameEdges="None"/>
+        <WindowChrome GlassFrameThickness="-1" ResizeBorderThickness="0"/>
     </WindowChrome.WindowChrome>
     <Window.Resources>
         <SolidColorBrush x:Key="Foreground" Color="White"/>
