@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace P4T {
     internal class Config {
@@ -94,6 +90,13 @@ namespace P4T {
                 pv.Value = value;
                 sectionKvp[key] = pv;
             }
+        }
+        public string GetString(string Section, string Key, string DefaultValue) {
+            string result = this[Section, Key];
+            if (result == null) {
+                return this[Section, Key] = DefaultValue;
+            }
+            return result;
         }
         public T GetValue<T>(string Section, string Key, T DefaultValue) {
             Type type = typeof(T);

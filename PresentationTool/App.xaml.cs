@@ -104,9 +104,6 @@ namespace P4T {
                 ppa = null;
             }
         }
-        //public void SlideShowHandler(PP.SlideShowWindow Wn) {
-        //    notify.ShowBalloonTip(0, "PPT Presentation Tool", "Handler Opened", WF.ToolTipIcon.Info);
-        //}
         bool TestAlive() {
             if (ppa == null) {
                 return false;
@@ -123,7 +120,7 @@ namespace P4T {
                 }
                 try {
                     if (statusText != null) {
-                        statusText.Text = "Not Connected";
+                        statusText.Text = (string)Resources["Menu.Status.Disconnected"];
                         statusText.Foreground = Brushes.Red;
                     }
                 }
@@ -133,7 +130,7 @@ namespace P4T {
             catch {
                 try {
                     if (statusText != null) {
-                        statusText.Text = "Not Connected";
+                        statusText.Text = (string)Resources["Menu.Status.Disconnected"];
                         statusText.Foreground = Brushes.Red;
                     }
                 }
@@ -153,7 +150,7 @@ namespace P4T {
                     ppa.SlideShowEnd += Ppa_SlideShowEnd;
                     try {
                         if (statusText != null) {
-                            statusText.Text = "Connected";
+                            statusText.Text = (string)Resources["Menu.Status.Connected"];
                             statusText.Foreground = Brushes.LimeGreen;
                         }
                     }
@@ -235,7 +232,7 @@ namespace P4T {
         ContextMenu NotifyIconMenu;
         WF.NotifyIcon notify;
         public App() {
-            Config = new Config("PresentationTool.ini");
+            Config = new Config("P4Tool.ini");
             notify = new WF.NotifyIcon();
             notify.Icon = new WD.Icon(GetResourceStream(new Uri("Icon.ico", UriKind.Relative)).Stream);
             notify.Visible = true;
@@ -301,11 +298,11 @@ namespace P4T {
             }
             try {
                 if (TestAlive()) {
-                    statusText.Text = "Connected";
+                    statusText.Text = (string)Resources["Menu.Status.Connected"];
                     statusText.Foreground = Brushes.LimeGreen;
                 }
                 else {
-                    statusText.Text = "Not Connected";
+                    statusText.Text = (string)Resources["Menu.Status.Disconnected"];
                     statusText.Foreground = Brushes.Red;
                 }
             }

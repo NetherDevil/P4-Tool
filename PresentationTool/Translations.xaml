@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:t="clr-namespace:System;assembly=mscorlib">
+    <t:String x:Key="Common.Name">P4T PowerPoint Presentation Tool</t:String>
+    <t:String x:Key="Menu.Status.Connected">Connected</t:String>
+    <t:String x:Key="Menu.Status.Disconnected">Not Connected</t:String>
+    <t:String x:Key="Menu.Connect">Connect</t:String>
+    <t:String x:Key="Menu.Disconnect">Disconnect</t:String>
+    <t:String x:Key="Menu.AutoDetect">Auto Detection</t:String>
+    <t:String x:Key="Menu.AutoStart">Start Background Instance</t:String>
+    <t:String x:Key="Menu.Configure">Configure</t:String>
+    <t:String x:Key="Menu.Quit">Quit</t:String>
+</ResourceDictionary>

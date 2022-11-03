@@ -65,6 +65,10 @@ namespace P4T {
             aliveTimer = new System.Timers.Timer();
             updateTimer.Interval = App.Config.GetValue("Toolbox", "UpdateInterval", 50.0);
             aliveTimer.Interval = App.Config.GetValue("Toolbox", "HeartbeatInterval", 3000.0);
+            Color background = Utilities.Parsers.Color.ParseHexRGB(App.Config.GetString("Toolbox", "Background", "000000"));
+            background.A = App.Config.GetValue("Toolbox", "Transparency", (byte)128);
+            Color foreground = Utilities.Parsers.Color.ParseHexRGB(App.Config.GetString("Toolbox", "Foreground", "FFFFFF"));
+            Resources["Foreground"] = Resources["GripColor"] = new SolidColorBrush(foreground);
             updateTimer.Elapsed += UpdateTimer_Elapsed;
             aliveTimer.Elapsed += AliveTimer_Elapsed;
             updateTimer.Start();
@@ -75,7 +79,7 @@ namespace P4T {
             bool tmp;
             WA.DwmApi.DwmGetColorizationColor(out accent, out tmp);
             AccentColor = accent;
-            modifier.Color = Color.FromArgb(128, 0, 0, 0);
+            modifier.Color = background;
             modifier.Enable();
             ExtendsVisible = false;
             maxControlMiss = App.Config.GetValue<long>("Toolbox", "MaxControlMiss", 20);

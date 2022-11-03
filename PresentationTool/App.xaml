@@ -4,38 +4,39 @@
              xmlns:local="clr-namespace:P4T"
              ShutdownMode="OnExplicitShutdown" Exit="Application_Exit">
     <Application.Resources>
-        <TextBlock x:Key="Status">Unknown</TextBlock>
-        <ContextMenu x:Key="NotifyIconMenu" StaysOpen="False" Focusable="True">
-            <ContextMenu.Resources>
-                <Style TargetType="MenuItem">
-                    <Setter Property="Height" Value="28"/>
-                </Style>
-            </ContextMenu.Resources>
-            <MenuItem IsEnabled="False">
-                <MenuItem.Header>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <ContentPresenter Grid.Row="0" Content="{DynamicResource ResourceKey=Status}"/>
-                    </Grid>
-                </MenuItem.Header>
-            </MenuItem>
-            <MenuItem Header="Connect" Click="MenuCommand_Connect">
-            </MenuItem>
-            <MenuItem Header="Disconnect" Click="MenuCommand_Disconnect">
-                <MenuItem.Icon>
-                    <TextBlock Text="" FontFamily="Segoe Fluent Icons"/>
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem x:Name="AutoDetect" Header="Auto Detection" IsCheckable="True" Checked="MenuItem_Checked" Unchecked="MenuItem_Unchecked" Loaded="AutoDetect_Loaded">
-                <!--MenuItem.Icon>
-                    <TextBlock x:Name="state_AutoDetect" Text="&#xe739;" FontFamily="Segoe Fluent Icons" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </MenuItem.Icon-->
-            </MenuItem>
-            <MenuItem x:Name="AutoStart" Header="Start Background Instance" IsCheckable="True" Checked="AutoStart_Checked" Unchecked="AutoStart_Unchecked" Loaded="AutoStart_Loaded"/>
-            <MenuItem Header="Configure" Click="MenuCommand_Configure"/>
-            <MenuItem Header="Quit" Click="MenuCommand_Quit"/>
-        </ContextMenu>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Translations.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <TextBlock x:Key="Status">Unknown</TextBlock>
+            <ContextMenu x:Key="NotifyIconMenu" StaysOpen="False" Focusable="True">
+                <ContextMenu.Resources>
+                    <Style TargetType="MenuItem">
+                        <Setter Property="Height" Value="28"/>
+                    </Style>
+                </ContextMenu.Resources>
+                <MenuItem IsEnabled="False">
+                    <MenuItem.Header>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <ContentPresenter Grid.Row="0" Content="{DynamicResource ResourceKey=Status}"/>
+                        </Grid>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource Menu.Connect}" Click="MenuCommand_Connect">
+                </MenuItem>
+                <MenuItem Header="{DynamicResource Menu.Disconnect}" Click="MenuCommand_Disconnect">
+                    <MenuItem.Icon>
+                        <TextBlock Text="" FontFamily="Segoe Fluent Icons"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="AutoDetect" Header="{DynamicResource Menu.AutoDetect}" IsCheckable="True" Checked="MenuItem_Checked" Unchecked="MenuItem_Unchecked" Loaded="AutoDetect_Loaded"/>
+                <MenuItem x:Name="AutoStart" Header="{DynamicResource Menu.AutoStart}" IsCheckable="True" Checked="AutoStart_Checked" Unchecked="AutoStart_Unchecked" Loaded="AutoStart_Loaded"/>
+                <MenuItem Header="{DynamicResource Menu.Configure}" Click="MenuCommand_Configure"/>
+                <MenuItem Header="{DynamicResource Menu.Quit}" Click="MenuCommand_Quit"/>
+            </ContextMenu>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

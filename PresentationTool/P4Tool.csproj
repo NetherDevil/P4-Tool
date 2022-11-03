@@ -96,6 +96,7 @@
     <Compile Include="Toolbox.xaml.cs">
       <DependentUpon>Toolbox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\Parsers\Color.cs" />
     <Compile Include="Utilities\Profile.cs" />
     <Compile Include="WindowsNative\Enums.cs" />
     <Compile Include="WindowsNative\Apis\DwmApi.cs" />
@@ -108,6 +109,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Toolbox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Translations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -177,5 +182,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
